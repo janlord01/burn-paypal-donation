@@ -1,0 +1,75 @@
+/* style.css */
+.paypal-donation-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.paypal-donation-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.paypal-donation-form .donation-amount-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.paypal-donation-form .currency-symbol {
+    margin-right: 8px;
+}
+
+.paypal-donation-form input[type="number"] {
+    width: calc(100% - 32px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.paypal-donation-form .paypal-donation-button {
+    background-color: #ffc439;
+    color: #333;
+    border: 0;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.paypal-donation-form .paypal-donation-button:hover {
+    background-color: #ffaa00;
+}
+
+.paypal-donation-form .donation-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.paypal-donation-form .donation-info p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.paypal-donation-form .donation-info p strong {
+    font-weight: bold;
+}

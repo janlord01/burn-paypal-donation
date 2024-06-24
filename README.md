@@ -41,6 +41,10 @@ Use the following shortcode to display the PayPal donation button on your site:
 ### Plugin Structure
 ```text
 burn-one-time-paypal-donation/
+├── css
+    ├── style.css
+├── images
+    ├── card.png
 ├── burn-one-time-paypal-donation.php
 └── README.md
 ```
