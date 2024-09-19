@@ -6,6 +6,13 @@ A simple WordPress plugin to add a one-time PayPal donation button with a minimu
 
 This plugin allows you to easily add a one-time PayPal donation button to your WordPress site. You can set a minimum donation amount and allow donors to enter a custom amount above that minimum. The plugin includes an admin settings page where you can configure the PayPal email, minimum donation amount, and currency code.
 
+### New Features in v1.1.0
+
+- **Automatic Page Creation**: Upon plugin activation, the plugin automatically creates a "Thank You" page (`/thank-you`) and a "Donation Cancelled" page (`/donation-cancelled`) with default content.
+- **Automatic Page Deletion**: Upon plugin deactivation, these pages are automatically removed from the site, ensuring a clean removal of all plugin-related data.
+- **Improved Shortcode Logic**: The donation button will now work even if the pages are dynamically created.
+
+
 ## Installation
 
 1. Download the plugin and unzip it.
@@ -53,9 +60,19 @@ burn-one-time-paypal-donation/
 
 This file contains the main code for the plugin, including the settings page and the shortcode functionality.
 
-### README.md
+## Release Notes
 
-This file provides information about the plugin, including installation instructions, usage, and configuration details.
+### v1.1.0 (Current Release)
+
+- Added automatic creation of /thank-you and /donation-cancelled pages upon activation.
+- Added automatic deletion of these pages upon deactivation.
+- Improved shortcode validation and page redirection for successful or cancelled donations.
+
+### v1.0 (Initial Release)
+
+- Added basic functionality for a one-time PayPal donation button.
+- Admin settings to configure PayPal email, minimum donation amount, and currency code.
+- Shortcode [burn_paypal_donation] to display the PayPal donation button.
 
 ## Author
 
@@ -65,3 +82,5 @@ This file provides information about the plugin, including installation instruct
 ## License
 
 This plugin is licensed under the MIT License.
+
+
