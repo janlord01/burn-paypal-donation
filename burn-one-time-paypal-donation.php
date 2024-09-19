@@ -2,7 +2,7 @@
 /*
 Plugin Name: Burn One Time PayPal Donation
 Description: A simple plugin to add a one-time PayPal donation button.
-Version: 1.0
+Version: 1.1
 Author: Janlord Luga
 Author URI: https://janlordluga.com/
 */
@@ -84,9 +84,6 @@ function burn_paypal_donation_button() {
             <input type="hidden" name="cancel_return" value="' . esc_url(home_url('/donation-cancelled')) . '">
             <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
             <button type="submit" name="submit" class="paypal-donation-button">Donate via PayPal</button>
-            <div class="card-icons">
-                <img src="' . plugin_dir_url(__FILE__) . 'images/card.png" alt="card">
-            </div>
         </form>
     </div>
     <script>
@@ -110,3 +107,41 @@ function burn_paypal_donation_enqueue_styles() {
     wp_enqueue_style('burn-paypal-donation-style', plugin_dir_url(__FILE__) . 'css/style.css');
 }
 add_action('wp_enqueue_scripts', 'burn_paypal_donation_enqueue_styles');
+
+// Create pages on plugin activation
+function burn_create_donation_pages() {
+    // Thank you page
+    $thank_you_page = array(
+        'post_title'    => 'Thank You',
+        'post_content'  => 'Thank you for your donation!',
+        'post_status'   => 'publish',
+        'post_type'     => 'page',
+        'post_name'     => 'thank-you',
+    );
+    wp_insert_post($thank_you_page);
+
+    // Donation cancelled page
+    $cancelled_page = array(
+        'post_title'    => 'Donation Cancelled',
+        'post_content'  => 'Your donation was cancelled. Feel free to try again.',
+        'post_status'   => 'publish',
+        'post_type'     => 'page',
+        'post_name'     => 'donation-cancelled',
+    );
+    wp_insert_post($cancelled_page);
+}
+register_activation_hook(__FILE__, 'burn_create_donation_pages');
+
+// Delete pages on plugin deactivation
+function burn_delete_donation_pages() {
+    $thank_you_page = get_page_by_path('thank-you');
+    if ($thank_you_page) {
+        wp_delete_post($thank_you_page->ID, true);
+    }
+
+    $cancelled_page = get_page_by_path('donation-cancelled');
+    if ($cancelled_page) {
+        wp_delete_post($cancelled_page->ID, true);
+    }
+}
+register_deactivation_hook(__FILE__, 'burn_delete_donation_pages');
